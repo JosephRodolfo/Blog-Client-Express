@@ -7,5 +7,10 @@ const router = express.Router();
 
 router.post('/new', auth(), postController.createPost)
 
+router.delete('/delete', auth(), postController.deletePost)
+
+router.get('/readone/:id', auth(), postController.getPost)
+
+
 
     module.exports = router

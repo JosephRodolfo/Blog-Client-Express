@@ -32,7 +32,36 @@ const deletePost = catchAsync(async (req, res) => {
   }
 });
 
+const getPost = catchAsync(async (req, res) => {
+
+  console.log('get posts!')
+  const _id = req.params.id;
+
+
+  try {
+    const post = await Post.findOne({
+      _id,
+      owner: req.user._id,
+    });
+
+    if (!post) {
+      return res.status(404).send();
+    }
+
+    // res.send(post);
+
+    res.status(201).send(post);
+
+
+  } catch (e) {
+    res.status(500).send();
+  }
+});
+
+
+
 module.exports = {
   createPost,
   deletePost,
+  getPost,
 };
