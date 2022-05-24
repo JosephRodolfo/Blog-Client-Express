@@ -2,7 +2,8 @@ const express = require('express');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
 const docsRoute = require('./docs.route');
-const postRoute = require('./post.route')
+const postRoute = require('./post.route');
+const homeRoute = require('./home.route')
 const config = require('../../config/config');
 
 const router = express.Router();
@@ -20,8 +21,23 @@ const defaultRoutes = [
     path:'/post',
     route: postRoute,
 
+  },
+  //view routes
+  {
+    path:'/',
+    route: homeRoute,
+
   }
 ];
+
+// const viewRoutes = [
+//   {
+//     path:'/home',
+//     route: postRoute,
+
+//   }
+
+// ]
 
 const devRoutes = [
   // routes available only in development mode
